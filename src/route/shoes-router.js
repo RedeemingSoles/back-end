@@ -19,12 +19,12 @@ shoesRouter.post('/shoes', jsonParser, (request, response, next) => {
   return new Shoes({
     ...request.body,
   })
-      .save()
-      .then((shoes) => {
-        logger.log(logger.INFO, 'Returning a 200 and a new Shoes');
-        return response.json(shoes);
-      })
-      .catch(next);
+    .save()
+    .then((shoes) => {
+      logger.log(logger.INFO, 'Returning a 200 and a new Shoes');
+      return response.json(shoes);
+    })
+    .catch(next);
 });
 
 // TODO: shoesRequestFormRouter.get('/shoes', jsonParser, (request, response, next) => {

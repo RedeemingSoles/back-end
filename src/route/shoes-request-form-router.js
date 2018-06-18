@@ -18,12 +18,12 @@ shoesRequestFormRouter.post('/shoes-request-form', jsonParser, (request, respons
   return new ShoesRequestForm({
     ...request.body,
   })
-      .save()
-      .then((shoesRequestForm) => {
-        logger.log(logger.INFO, 'Returning a 200 and a new Shoes Request Form');
-        return response.json(shoesRequestForm);
-      })
-      .catch(next);
+    .save()
+    .then((shoesRequestForm) => {
+      logger.log(logger.INFO, 'Returning a 200 and a new Shoes Request Form');
+      return response.json(shoesRequestForm);
+    })
+    .catch(next);
 });
 
 // TODO: shoesRequestFormRouter.get('/shoes-request-forms', jsonParser, (request, response, next)
