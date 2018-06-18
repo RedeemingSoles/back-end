@@ -17,17 +17,17 @@ accountRouter.post('/signup', jsonParser, (request, response, next) => {
     throw new HttpError(400, 'Invalid request.');
   }
   return Account.create(request.body.username, request.body.email, request.body.password)
-      .then((account) => {
-        delete request.body.password;
-        logger.log('logger.INFO', 'AUTH - creating TOKEN');
-        return account.createToken();
-      })
-      .then((token) => {
-        logger.log('logger.INFO', 'AUTH - returning a 200 code and a token');
-        response.cookie('RS-Token', token, { maxAge: 900000 });
-        response.send(token);
-      })
-      .catch(next);
+    .then((account) => {
+      delete request.body.password;
+      logger.log('logger.INFO', 'AUTH - creating TOKEN');
+      return account.createToken();
+    })
+    .then((token) => {
+      logger.log('logger.INFO', 'AUTH - returning a 200 code and a token');
+      response.cookie('RS-Token', token, { maxAge: 900000 });
+      response.send(token);
+    })
+    .catch(next);
 });
 
 accountRouter.get('/login', basicAuthMiddleware, (request, response, next) => {
@@ -35,12 +35,12 @@ accountRouter.get('/login', basicAuthMiddleware, (request, response, next) => {
     return next(new HttpError(400, 'AUTH - invalid request'));
   }
   return request.account.createToken()
-      .then((token) => {
-        logger.log(logger.INFO, 'LOGIN - responding with a 200 status and a token');
-        response.cookie('RS-Token', token, { maxAge: 900000 });
-        response.send(token);
-      })
-      .catch(next);
+    .then((token) => {
+      logger.log(logger.INFO, 'LOGIN - responding with a 200 status and a token');
+      response.cookie('RS-Token', token, { maxAge: 900000 });
+      response.send(token);
+    })
+    .catch(next);
 });
 
 export default accountRouter;
