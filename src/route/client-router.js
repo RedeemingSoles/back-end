@@ -23,21 +23,21 @@ clientRouter.post('/profile', bearerAuthMiddleware, jsonParser, (request, respon
     ...request.body,
     account: request.account._id,
   })
-      .save()
-      .then((client) => {
-        logger.log(logger.INFO, 'Returning a 200 and a new Client');
-        return response.json(client);
-      })
-      .catch(next);
+    .save()
+    .then((client) => {
+      logger.log(logger.INFO, 'Returning a 200 and a new Client');
+      return response.json(client);
+    })
+    .catch(next);
 });
 
 clientRouter.get('/profile/:id', bearerAuthMiddleware, (request, response, next) => {
   return Client.findById(request.params.id)
-      .then((client) => {
-        logger.log(logger.INFO, 'GET - responding with a 200 status code');
-        return response.json(client);
-      })
-      .catch(next);
+    .then((client) => {
+      logger.log(logger.INFO, 'GET - responding with a 200 status code');
+      return response.json(client);
+    })
+    .catch(next);
 });
 
 export default clientRouter;

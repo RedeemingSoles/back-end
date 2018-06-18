@@ -20,12 +20,12 @@ requestItemRouter.post('/request-item', jsonParser, (request, response, next) =>
     shoesRequestForm: request.shoesRequestForm._id,
   //  TODO: test for client property & || request form properties
   })
-      .save()
-      .then((requestItem) => {
-        logger.log(logger.INFO, 'Returning a 200 and a new Request Item');
-        return response.json(requestItem);
-      })
-      .catch(next);
+    .save()
+    .then((requestItem) => {
+      logger.log(logger.INFO, 'Returning a 200 and a new Request Item');
+      return response.json(requestItem);
+    })
+    .catch(next);
 });
 
 // TODO:  requestItemRouter.get('/profile/:id', (request, response, next) => {
