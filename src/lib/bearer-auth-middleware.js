@@ -26,7 +26,7 @@ export default (request, response, next) => {
     return next(new HttpError(400, 'AUTH - invalid request'));
   }
 
-  return promisify(jsonWebToken.verify)(token, process.env.BLOOMIO_SECRET)
+  return promisify(jsonWebToken.verify)(token, process.env.RS_SECRET)
     .catch((error) => {
       return Promise.reject(new HttpError(401, `AUTH - jsonWebToken Error ${error}`));
     })

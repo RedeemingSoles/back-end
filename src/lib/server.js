@@ -7,7 +7,7 @@ import logger from './logger';
 import errorMiddleware from './error-middleware';
 import accountRouter from '../route/account-router';
 import clientRouter from '../route/client-router';
-import shoeRouter from '../route/shoe-router';
+import shoeRouter from '../route/shoes-router';
 
 const app = express();
 let server = null;

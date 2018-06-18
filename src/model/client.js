@@ -23,7 +23,7 @@ const clientSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  streetAddress: {
+  mailingAddress: {
     type: String,
     required: true,
   },
