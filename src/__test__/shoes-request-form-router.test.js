@@ -19,6 +19,7 @@ describe('shoes-request-form-router.test.js', () => {
   afterEach(removeRequestFormMock);
   afterAll(stopServer);
   jest.setTimeout(10000);
+  
   describe('POST /request', () => {
     test('POST - should return a 200 and the newly added request form.', () => {
       let clientMock = {};
@@ -35,14 +36,10 @@ describe('shoes-request-form-router.test.js', () => {
               client: clientMock.client._id,
             })
             .then((response) => {
-              console.log('__RESPONSE__', response);
               expect(response.status).toEqual(200);
               expect(response.body.requestItems).toEqual([]);
             });
         });
-    });
-    test('placeholder', () => {
-      expect(true).toBeTruthy();
     });
   });
 });
