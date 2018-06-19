@@ -19,14 +19,14 @@ This is a demonstration Back-End for the Redeeming Soles "No kids left on the si
 
 
 ## Change Log
-06-16-2018 11:45PM Initial Commit
-06-17-2018 12:05AM Initial README
-06-18-2018 08:59AM Scaffolding for the back-end
-06-18-2018 09:25AM 2nd Scaffolding Commit
-06-18-2018 11:04AM Account, Client, ShoesRequestForm, RequestItem, and Shoes schema's complete.
-06-18-2018 12:27AM updated routes
-06-18-2018 12:31PM updated package.json & secret
-06-18-2018 04:30PM Account POST/GET testing complete.
-06-18-2018 04:45PM Client POST/GET testing complete.
-06-18-2018 05:15PM Submitting placeholder test for CI.
-06-18-2018 05:30PM adding CORS_ORIGINS var.
+- 06-16-2018 11:45PM Initial Commit
+- 06-17-2018 12:05AM Initial README
+- 06-18-2018 08:59AM Scaffolding for the back-end
+- 06-18-2018 09:25AM 2nd Scaffolding Commit
+- 06-18-2018 11:04AM Account, Client, ShoesRequestForm, RequestItem, and Shoes schema's complete.
+- 06-18-2018 12:27AM updated routes
+- 06-18-2018 12:31PM updated package.json & secret
+- 06-18-2018 04:30PM Account POST/GET testing complete.
+- 06-18-2018 04:45PM Client POST/GET testing complete.
+- 06-18-2018 05:15PM Submitting placeholder test for CI.
+- 06-18-2018 05:30PM adding CORS_ORIGINS var.
