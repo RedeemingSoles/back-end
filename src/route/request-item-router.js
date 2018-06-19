@@ -5,25 +5,27 @@ import { json } from 'body-parser';
 import HttpError from 'http-errors';
 
 import RequestItem from '../model/request-item';
+import Client from '../model/client';
+import bearerAuthMiddleware from '../lib/bearer-auth-middleware';
 import logger from '../lib/logger';
 
 const jsonParser = json();
 const requestItemRouter = new Router();
 
-requestItemRouter.post('/request-item', jsonParser, (request, response, next) => {
-  if (!request.body.shoesRequestForm || !request.body.shoeType || !request.body.gender ||
-      !request.body.age || !request.body.size) {
+requestItemRouter.post('/request-item', bearerAuthMiddleware, jsonParser, (request, response, next) => {
+  if (!request.body.shoesRequestForm) {
     return next(new HttpError(400, 'REQUEST ITEM - invalid request'));
   }
-  return new RequestItem({
-    ...request.body,
-    shoesRequestForm: request.shoesRequestForm._id,
-  //  TODO: test for client property & || request form properties
-  })
-    .save()
-    .then((requestItem) => {
-      logger.log(logger.INFO, 'Returning a 200 and a new Request Item');
-      return response.json(requestItem);
+  return Client.findOne({ account: request.account._id })
+    .then((client) => {
+      request.body.client = client._id;
+    })
+    .then(() => {
+      return new RequestItem(request.body).save()
+        .then((requestItem) => {
+          logger.log(logger.INFO, 'POST - responding with a 200 status code.');
+          return response.json(requestItem);
+        });
     })
     .catch(next);
 });
