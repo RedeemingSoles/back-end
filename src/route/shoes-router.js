@@ -12,8 +12,8 @@ const jsonParser = json();
 const shoesRouter = new Router();
 
 shoesRouter.post('/shoes', jsonParser, (request, response, next) => {
-  if (!request.shoeType || !request.body.age || !request.body.gender ||
-      !request.body.size) {
+  if (!request.body.shoeType || !request.body.age || !request.body.gender ||
+      !request.body.shoeSize) {
     return next(new HttpError(400, 'SHOES - invalid request'));
   }
   return new Shoes({
@@ -27,6 +27,18 @@ shoesRouter.post('/shoes', jsonParser, (request, response, next) => {
     .catch(next);
 });
 
-// TODO: shoesRequestFormRouter.get('/shoes', jsonParser, (request, response, next) => {
+shoesRouter.get('/shoes', jsonParser, (request, response, next) => {
+  if (!request.query.shoeType || !request.query.age || !request.query.gender ||
+    !request.query.shoeSize) {
+    return next(new HttpError(400, 'SHOES - invalid request'));
+  }
+
+  return Shoes.findOne(request.query)
+    .then((shoes) => {
+      logger.log(logger.INFO, 'GET - responding with a 200 status code and a matched pair of shoes');
+      return response.json(shoes);
+    })
+    .catch(next);
+});
 
 export default shoesRouter;
