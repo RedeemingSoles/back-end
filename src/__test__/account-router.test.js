@@ -10,6 +10,7 @@ describe('ACCOUNT-ROUTER', () => {
   beforeAll(startServer);
   afterAll(stopServer);
   afterEach(removeAccountMock);
+  jest.setTimeout(10000);
   
   describe('POST /signup', () => {
     test('POST - should return a 200 status code and a TOKEN.', () => {

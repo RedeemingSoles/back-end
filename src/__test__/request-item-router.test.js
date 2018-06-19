@@ -11,6 +11,7 @@ describe('request-item-router.test.js', () => {
   beforeAll(startServer);
   afterAll(removeRequestItemMock);
   afterAll(stopServer);
+  jest.setTimeout(10000);
 
   describe('POST /request-item', () => {
     test('POST - should return a 200 status code and a request item.', () => {
