@@ -12,15 +12,15 @@ const requestItemSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  gender: {
-    type: String,
-    required: true,
-  },
   age: {
     type: String,
     required: true,
   },
-  size: {
+  gender: {
+    type: String,
+    required: true,
+  },
+  shoeSize: {
     type: Number,
     required: true,
   },
@@ -36,8 +36,7 @@ const requestItemSchema = mongoose.Schema({
     default: () => new Date(),
   },
   shoesRequestForm: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'shoesRequestForm',
+    type: mongoose.Schema.ObjectId,
     required: true,
   },
 });
