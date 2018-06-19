@@ -1,5 +1,6 @@
 ![redeeming soles logo image](assets/logo__white_200w.png)
 
+Redeeming Soles | No Kids Left on the Sidelines
 
 
 [![Build Status](https://travis-ci.org/RedeemingSoles/back-end.svg?branch=staging)](https://travis-ci.org/RedeemingSoles/back-end)
