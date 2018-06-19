@@ -21,7 +21,6 @@ const shoesRequestFormSchema = mongoose.Schema({
   client: {
     type: mongoose.Schema.ObjectId,
     required: true,
-    unique: true,
   },
 }, {
   usePushEach: true,

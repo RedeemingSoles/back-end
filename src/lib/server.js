@@ -8,6 +8,7 @@ import errorMiddleware from './error-middleware';
 import accountRouter from '../route/account-router';
 import clientRouter from '../route/client-router';
 import shoeRouter from '../route/shoes-router';
+import shoesRequestFormRouter from '../route/shoes-request-form-router';
 
 const app = express();
 let server = null;
@@ -19,6 +20,7 @@ app.use(cors({
 app.use(accountRouter);
 app.use(clientRouter);
 app.use(shoeRouter);
+app.use(shoesRequestFormRouter);
 
 app.all('*', (request, response) => {
   logger.log(logger.INFO, 'Returning a 404 from the catch-all/default route');
