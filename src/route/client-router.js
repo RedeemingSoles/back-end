@@ -31,6 +31,19 @@ clientRouter.post('/profile', bearerAuthMiddleware, jsonParser, (request, respon
     .catch(next);
 });
 
+clientRouter.get('/profile/me', bearerAuthMiddleware, (request, response, next) => {
+  return Client.findOne({ account: request.account._id })
+    .then((client) => {
+      console.log(response);
+      if (!client) {
+        return next(new HttpError(404, 'Client not found'));
+      }
+      logger.log(logger.INFO, 'GET - responding with a 200 status code');
+      return response.json(client);
+    })
+    .catch(next);
+});
+
 clientRouter.get('/profile/:id', bearerAuthMiddleware, (request, response, next) => {
   return Client.findById(request.params.id)
     .then((client) => {
