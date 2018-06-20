@@ -14,9 +14,11 @@ const jsonParser = json();
 const shoesRequestFormRouter = new Router();
 
 shoesRequestFormRouter.post('/request', bearerAuthMiddleware, jsonParser, (request, response, next) => {
-  if (!request.body.client) {
-    return next(new HttpError(400, 'SHOES REQUEST FORM - invalid request'));
-  }
+  // if (!request.account) {
+  //   console.log(request);
+  //   return next(new HttpError(400, 'SHOES REQUEST FORM - invalid request'));
+  // }
+  console.log('__REQBODY__', request.body);
   return Client.findOne({ account: request.account._id })
     .then((client) => {
       request.body.client = client._id;

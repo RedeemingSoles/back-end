@@ -12,12 +12,7 @@ const shoesRequestFormSchema = mongoose.Schema({
   orderCompleteDate: {
     type: Date,
   },
-  requestItems: [
-    {
-      type: mongoose.Schema.Types.ObjectId, 
-      ref: 'requestItem',
-    },
-  ],
+  requestItems: [],
   client: {
     type: mongoose.Schema.ObjectId,
     required: true,

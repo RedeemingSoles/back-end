@@ -34,7 +34,6 @@ clientRouter.post('/profile', bearerAuthMiddleware, jsonParser, (request, respon
 clientRouter.get('/profile/me', bearerAuthMiddleware, (request, response, next) => {
   return Client.findOne({ account: request.account._id })
     .then((client) => {
-      console.log(response);
       if (!client) {
         return next(new HttpError(404, 'Client not found'));
       }
