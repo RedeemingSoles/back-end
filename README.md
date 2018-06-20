@@ -6,7 +6,7 @@
 [![Build Status](https://travis-ci.org/RedeemingSoles/back-end.svg?branch=staging)](https://travis-ci.org/RedeemingSoles/back-end)
 ### Index
 - [Overview](#overview)
-- [Getting Started](#getting-started)
+- [Architecture](#architecture)
 - [Change Log](#change-log)
 
 
@@ -19,15 +19,30 @@ This is a demonstration Back-End for the Redeeming Soles "No kids left on the si
  match the request from coaches and sports leagues.
 
 
+## Architecture
+![redeeming soles backend image](assets/Redeeming-soles-backend.jpeg)
+
+
+ 
 ## Change Log
-- 06-16-2018 11:45PM Initial Commit
-- 06-17-2018 12:05AM Initial README
-- 06-18-2018 08:59AM Scaffolding for the back-end
-- 06-18-2018 09:25AM 2nd Scaffolding Commit
-- 06-18-2018 11:04AM Account, Client, ShoesRequestForm, RequestItem, and Shoes schema's complete.
-- 06-18-2018 12:27AM updated routes
-- 06-18-2018 12:31PM updated package.json & secret
-- 06-18-2018 04:30PM Account POST/GET testing complete.
-- 06-18-2018 04:45PM Client POST/GET testing complete.
-- 06-18-2018 05:15PM Submitting placeholder test for CI.
-- 06-18-2018 05:30PM adding CORS_ORIGINS var.
+- 06-16-2018  11:45PM Initial Commit
+- 06-17-2018  12:05AM Initial README
+- 06-18-2018  08:59AM Scaffolding for the back-end
+- 06-18-2018  09:25AM 2nd Scaffolding Commit
+- 06-18-2018  11:04AM Account, Client, ShoesRequestForm, RequestItem, and Shoes schema's complete.
+- 06-18-2018  12:27AM updated routes
+- 06-18-2018  12:31PM updated package.json & secret
+- 06-18-2018  04:30PM Account POST/GET testing complete.
+- 06-18-2018  04:45PM Client POST/GET testing complete.
+- 06-18-2018  05:15PM Submitting placeholder test for CI.
+- 06-18-2018  05:30PM adding CORS_ORIGINS var.
+- 06-19-2018  08:15AM  Update README.md
+- 06-19-2018  10:00AM  Request Form POST route + testing complete.
+- 06-19-2018  12:00PM  Request Item POST route + testing complete.
+- 06-19-2018  01:00PM  adding timeouts to test files to pass CI build.
+- 06-19-2018  04:03PM  reconciling front and back end properties
+- 06-19-2018  04:10PM  update to gitignore
+
+
+## Credits and Collaborations
+Thank you to the Code Fellows staff, TA's and fellow 401d23 students!
