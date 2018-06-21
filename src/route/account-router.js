@@ -24,8 +24,8 @@ accountRouter.post('/signup', jsonParser, (request, response, next) => {
     })
     .then((token) => {
       logger.log('logger.INFO', 'AUTH - returning a 200 code and a token');
-      response.cookie('RS-Token', token, { maxAge: 900000 });
-      response.send(token);
+      response.cookie('RS-Token', token, { maxAge: process.env.COOKIE_TIMEOUT });
+      response.send({ token, isAdmin: false });
     })
     .catch(next);
 });
@@ -37,8 +37,8 @@ accountRouter.get('/login', basicAuthMiddleware, (request, response, next) => {
   return request.account.createToken()
     .then((token) => {
       logger.log(logger.INFO, 'LOGIN - responding with a 200 status and a token');
-      response.cookie('RS-Token', token, { maxAge: 900000 });
-      response.send(token);
+      response.cookie('RS-Token', token, { maxAge: process.env.COOKIE_TIMEOUT });
+      response.send({ token, isAdmin: request.account.isAdmin });
     })
     .catch(next);
 });

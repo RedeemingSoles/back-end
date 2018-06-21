@@ -42,7 +42,6 @@ describe('request-item-router.test.js', () => {
                   shoesRequestForm: clientMock.shoesRequestForm.body._id,
                 })
                 .then((response) => {
-                  console.log('__RESPONSE__', response);
                   expect(response.status).toEqual(200);
                 });
             });
