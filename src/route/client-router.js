@@ -5,7 +5,6 @@ import { json } from 'body-parser';
 import HttpError from 'http-errors';
 
 import Client from '../model/client';
-// import ShoesRequestForm from '../model/shoes-request-form';
 import bearerAuthMiddleware from '../lib/bearer-auth-middleware';
 import logger from '../lib/logger';
 
@@ -44,11 +43,20 @@ clientRouter.get('/profile/me', bearerAuthMiddleware, (request, response, next) 
 });
 
 clientRouter.get('/profile/:id', bearerAuthMiddleware, (request, response, next) => {
-  console.log(request);
   return Client.findById(request.params.id)
     .then((client) => {
       logger.log(logger.INFO, 'GET - responding with a 200 status code');
       return response.json(client);
+    })
+    .catch(next);
+});
+
+clientRouter.put('/profile/:id', bearerAuthMiddleware, jsonParser, (request, response, next) => {
+  const options = { runValidators: true, new: true };
+  return Client.findByIdAndUpdate(request.params.id, request.body, options)
+    .then((updatedclient) => {
+      logger.log(logger.INFO, 'PUT - responding with a 200 status code');
+      return response.json(updatedclient);
     })
     .catch(next);
 });
