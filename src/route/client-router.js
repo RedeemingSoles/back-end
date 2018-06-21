@@ -44,6 +44,7 @@ clientRouter.get('/profile/me', bearerAuthMiddleware, (request, response, next) 
 });
 
 clientRouter.get('/profile/:id', bearerAuthMiddleware, (request, response, next) => {
+  console.log(request);
   return Client.findById(request.params.id)
     .then((client) => {
       logger.log(logger.INFO, 'GET - responding with a 200 status code');
