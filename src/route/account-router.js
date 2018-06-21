@@ -6,6 +6,7 @@ import { Router } from 'express';
 
 import Account from '../model/account';
 import basicAuthMiddleware from '../lib/basic-auth-middleware';
+import bearerAuthMiddleware from '../lib/bearer-auth-middleware';
 import logger from '../lib/logger';
 
 const jsonParser = bodyParser.json();
@@ -24,7 +25,7 @@ accountRouter.post('/signup', jsonParser, (request, response, next) => {
     })
     .then((token) => {
       logger.log('logger.INFO', 'AUTH - returning a 200 code and a token');
-      response.cookie('RS-Token', token, { maxAge: 900000 });
+      response.cookie('RS-Token', token, { maxAge: process.env.COOKIE_TIMEOUT });
       response.send(token);
     })
     .catch(next);
@@ -37,10 +38,19 @@ accountRouter.get('/login', basicAuthMiddleware, (request, response, next) => {
   return request.account.createToken()
     .then((token) => {
       logger.log(logger.INFO, 'LOGIN - responding with a 200 status and a token');
-      response.cookie('RS-Token', token, { maxAge: 900000 });
+      response.cookie('RS-Token', token, { maxAge: process.env.COOKIE_TIMEOUT });
       response.send(token);
     })
     .catch(next);
+});
+
+accountRouter.get('/admin-validate', bearerAuthMiddleware, (request, response, next) => {
+  if (!request.account) {
+    return next(new HttpError(401, 'AUTH - not allowed'));
+  }
+  const { isAdmin } = request.account;
+  logger.log(logger.INFO, 'VALIDATE - responding with a 200 status and verifies if account is admin.');
+  return isAdmin ? response.send(200) : response.send(401);
 });
 
 export default accountRouter;
