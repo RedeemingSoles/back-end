@@ -39,7 +39,7 @@ accountRouter.get('/login', basicAuthMiddleware, (request, response, next) => {
     .then((token) => {
       logger.log(logger.INFO, 'LOGIN - responding with a 200 status and a token');
       response.cookie('RS-Token', token, { maxAge: process.env.COOKIE_TIMEOUT });
-      response.send(token);
+      response.send({ token, isAdmin: request.account.isAdmin });
     })
     .catch(next);
 });
