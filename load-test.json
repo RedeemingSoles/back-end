@@ -1,0 +1,60 @@
+{
+  "config": {
+    "target": "https://redeeming-soles.herokuapp.com",
+    "phases": [
+      {
+       "duration": 5,
+       "arrivalRate": 400
+      },
+      {
+        "duration": 5,
+        "arrivalRate": 400
+      }
+    ],
+    "processor" : "./load-test-create-user.js"
+  },
+  "scenarios": [
+    {
+      "name": "Create Users",
+      "flow": [
+        {
+          "function": "create"
+        },
+        {
+          "post": {
+            "url": "/signup",
+            "json": {
+              "username": "{{ username }}",
+              "email": "{{ email }}",
+              "password": "{{ password }}"
+            },
+            "capture": {
+              "json": "$.token",
+              "as": "token"
+            }
+          }
+        }
+        ,{
+          "post": {
+            "url": "/profile",
+            "headers": {
+              "Authorization": "Bearer {{ token }}"
+            },
+            "json": {
+              "organizationName": "{{ organizationName }}",
+              "contactFirstName": "{{ contactFirstName }}",
+              "contactLastName": "{{ contactLastName }}",
+              "title": "{{ title }}",
+              "phoneNumber": "{{ phoneNumber }}",
+              "mailingAddress": "{{ mailingAddress }}",
+              "city": "{{ city }}",
+              "state": "{{ state }}",
+              "zipCode": "{{ zipCode }}",
+              "country": "{{ country }}"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
