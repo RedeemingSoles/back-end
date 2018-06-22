@@ -1,9 +1,5 @@
 'use strict';
 
-// ----------------------------------------------------------------------------------
-// Shoes are added via the Admin input form and represent inventory.
-// ----------------------------------------------------------------------------------
-
 import { Router } from 'express';
 import { json } from 'body-parser';
 import HttpError from 'http-errors';

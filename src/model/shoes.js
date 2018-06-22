@@ -1,5 +1,9 @@
 'use strict';
 
+// ----------------------------------------------------------------------------------
+// Shoes are added via the Admin input form and represent inventory.
+// ----------------------------------------------------------------------------------
+
 import mongoose from 'mongoose';
 
 const shoesSchema = mongoose.Schema({
