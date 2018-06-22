@@ -30,6 +30,4 @@ requestItemRouter.post('/request-item', bearerAuthMiddleware, jsonParser, (reque
     .catch(next);
 });
 
-// TODO:  requestItemRouter.get('/profile/:id', (request, response, next) => {
-
 export default requestItemRouter;

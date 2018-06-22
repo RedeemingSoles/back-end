@@ -1,5 +1,9 @@
 'use strict';
 
+// ----------------------------------------------------------------------------------
+// Orders are saved to the requesting client and contain a list of the individual request items.
+// ----------------------------------------------------------------------------------
+
 import mongoose from 'mongoose';
 import HttpError from 'http-errors';
 import Client from './client';

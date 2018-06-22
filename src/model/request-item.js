@@ -1,5 +1,9 @@
 'use strict';
 
+// ----------------------------------------------------------------------------------
+// Each individual request on an Order is saved as an individual request item.
+// ----------------------------------------------------------------------------------
+
 import mongoose from 'mongoose';
 import HttpError from 'http-errors';
 import ShoesRequestForm from './shoes-request-form';
