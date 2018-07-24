@@ -12,28 +12,46 @@
 
 
 ## Overview
-This is a demonstration Back-End for the Redeeming Soles "No kids left on the sideline" project. 
- This backend application utilizes a Mongo data base to track incoming shoe requests from 
- coaches and youth sports leagues for children who need sports shoes but the children's families 
- do not have the ability to obtain the shoes.  In order to best support the tracking of 
- shoes, we implemented an additional schema to account for the inventory of donated shoes to 
- match the request from coaches and sports leagues.
+This is the first iteration of a web application for the Redeeming Soles "No Kids Left on the Sidelines" project. The mission is to provide for children who are in need of sports shoes but do not have the ability to obtain them. This application is designed to track incoming sport shoes/cleats requests from coaches and youth sports leagues. This application aids in keeping an accurate inventory of sports shoes and prioritizes fulfillment of in-house requests first. 
 
+To accomplish this we implemented an additional data base schema in order to account for the inventory of donated shoes. 
 
 ## Architecture
-This API recievies and sends calls from the Redeeming Soles frontend.
+This application utilizes an Express.js server with a Node.js backend. The data base that is implemented is a MongoDB with custom written schemas. The backend presents all of the data and routing via API. 
 ![redeeming soles backend image](assets/Redeeming-soles-backend.jpeg)
+### API Endpoints
+Account Router:
+- /signup - POST route is used for signing up an account. Requires username, password, and email fields. 
+- /login - GET route is used for signing into an existing account. Requires valid username and password.
 
+Client Router:
+- /profile - POST route is used to create a profile.
+The Following fields are required: account, organizationName, contactFirstName, contactLastName, title, phoneNumber, mailingAddress, city, state, zipCode
+- /profile/me - GET route retrieves the profile that is associated with the logged in account.
+- /profile/:id - POST route retrieves the profile that is associated with the id that has been passed. 
+- /profile/:id - PUT route that updates the profile that is associated with the id that has been passed. 
+
+Request Item Router: 
+- /request-item - POST route used to create a new request for the item that is filled out in the form.
+
+Shoes Request Form Router:
+- /request - POST route used to create a new request for the shoes that are filled out in the form.
+
+Shoes Router: 
+- /shoes - POST route used to import the shoe in the form into the inventory. Required fields: shoeType, age, gender, and shoeSize. 
+- /shoes - GET route used to return a given shoe with the specified characteristics. Required fields: shoeType, age, gender, and shoeSize. 
 
 ## Testing
-#### Jest testing
+#### Jest Testing Suite
+Backend testing was accomplished via the Jest testing suite. This allows for both unit testing individual features and integration testing for newly added features. The test driven development methodology of red green testing was used to ensure once features worked there would be no regression of the current code base. 
+
 ![Jest testing image](assets/RS-backend-test-coverage.JPG)
 
-#### Artillery.io Load Testing
-![Artillery.io testing image](assets/RS-artillery-testing.JPG)
+#### Artillery.io Load Testing Toolkit
+Artillery.io is a package which allows us to write a JSON file to load test the application. We were able to vary the duration, load in number of users, and target of the endpoint in order to try to find the point of failure for a free Heroku account(where the application is hosted). The package yields a report including the following metrics; latency, requests per second, concurrency, and throughput. This is displayed in the picture below. 
 
-This application used Jest testing for our TDD approach.  We also Load tested this application 
-while it was being hosted on a free Heroku account.
+![Artillery.io testing image](assets/RS-artillery-testing.JPG)
+ 
  
 ## Change Log
 - 06-16-2018  11:45PM  Initial Commit
@@ -93,7 +111,8 @@ while it was being hosted on a free Heroku account.
 - 06-21-2018  09:38PM  modal is wlooking nice and a few other random little bugs
 - 06-21-2018  09:44PM  bug styles  
 - 06-22-2018  12:05PM  front end testing
-- 06-22-2018  01:
+- 07-23-2018  4:30 PM 
+readme reformatting
 
 
 ## Credits and Collaborations
